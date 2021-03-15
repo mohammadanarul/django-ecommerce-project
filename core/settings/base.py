@@ -1,5 +1,5 @@
 import os
-# from decouple import config
+from decouple import config
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -9,8 +9,8 @@ BASE_DIR = os.path.dirname(os.path.dirname(
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
 
-SECRET_KEY = os.environ('SECRET_KEY')
-#SECRET_KEY = 'yj-#+cp79ocyoceh=#ei(1t(eea)pd4)f3r4t+&!5w1@8#a&vrumianuskaesmotarasumirubi'
+SECRET_KEY = config('SECRET_KEY')
+# SECRET_KEY = 'yj-#+cp79ocyoceh=#ei(1t(eea)pd4)f3r4t+&!5w1@8#a&vrumianuskaesmotarasumirubi'
 
 # Application definition
 
@@ -21,6 +21,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    # custom app installed
+    'shop.apps.ShopConfig',
 ]
 
 MIDDLEWARE = [
@@ -89,7 +91,7 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 STATIC_URL = '/static/'
-STATICFILE_DIRS = [os.path.join(BASE_DIR, 'static')]
+STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
 STATIC_ROOT = os.path.join(BASE_DIR, 'static_cdn')
 
 MEDIA_URL = '/media/'
