@@ -1,5 +1,11 @@
 from django.shortcuts import render
+from django.views.generic import ListView
+from .models import Product
 
-def home_page(request):
+class HomeView(ListView):
+    model = Product
     template_name = 'home.html'
-    return render(request, template_name)
+
+class ShopView(ListView):
+    model = Product
+    template_name = 'shop/shop.html'

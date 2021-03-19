@@ -10,7 +10,6 @@ BASE_DIR = os.path.dirname(os.path.dirname(
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
 
 SECRET_KEY = config('SECRET_KEY')
-# SECRET_KEY = 'yj-#+cp79ocyoceh=#ei(1t(eea)pd4)f3r4t+&!5w1@8#a&vrumianuskaesmotarasumirubi'
 
 # Application definition
 
@@ -21,8 +20,11 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'ckeditor',
     # custom app installed
     'shop.apps.ShopConfig',
+    'orders.apps.OrdersConfig',
+    'mptt',
 ]
 
 MIDDLEWARE = [
@@ -96,3 +98,5 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static_cdn')
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media_cdn')
+# cheditor upload path
+CKEDITOR_UPLOAD_PATH = "uploads/"
