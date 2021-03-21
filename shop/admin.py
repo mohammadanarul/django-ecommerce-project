@@ -3,7 +3,8 @@ from mptt.admin import DraggableMPTTAdmin
 from .models import (
     Product,
     Category,
-    Brand
+    Brand,
+    ProductImages,
 )
 
 @admin.register(Category)
@@ -41,6 +42,10 @@ class CategoryAdmin(DraggableMPTTAdmin):
     related_products_cumulative_count.short_description = 'Related products (in tree)'
 
 admin.site.register(Brand)
+class ProductImagesInline(admin.TabularInline):
+    model = ProductImages
+    extra = 1
+
 @admin.register(Product)
 class ProductAdminModel(admin.ModelAdmin):
-    pass
+    inlines =  [ProductImagesInline]

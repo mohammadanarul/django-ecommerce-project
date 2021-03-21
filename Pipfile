@@ -4,11 +4,15 @@ verify_ssl = true
 name = "pypi"
 
 [packages]
-django = "*"
-python-decouple = "*"
-pillow = "*"
-django-mptt = "*"
-django-ckeditor = "*"
+python-decouple = "==3.4"
+django-mptt = "==0.12.0"
+django-ckeditor = "==6.0.0"
+asgiref = "==3.3.1"
+django-js-asset = "==1.2.2"
+pytz = "==2021.1"
+sqlparse = "==0.4.1"
+Django = "==3.1.7"
+Pillow = "==8.1.2"
 
 [dev-packages]
 
