@@ -19,11 +19,11 @@ def add_to_cart(request, slug):
             order_item.quantity += 1
             order_item.save()
             messages.info(request, 'This item quantity was updated.')
-            return redirect('/')
+            return redirect('chat:home')
         else:
             order.items.add(order_item)
             messages.info(request, 'This item was added to your cart.')
-            return redirect('/')
+            return redirect('chat:home')
     else:
         ordered_date = timezone.now()
         order = Order.objects.create(
@@ -32,5 +32,5 @@ def add_to_cart(request, slug):
         )
         order.items.add(order_item)
         messages.info(request, 'This item was added to your cart.')
-            return redirect('/')
+        return redirect('chat:home')
         
