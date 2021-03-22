@@ -9,6 +9,9 @@ class OrderItem(models.Model):
     item = models.ForeignKey(Product, on_delete=models.CASCADE)
     quantity = models.IntegerField(default=1)
     ordered = models.BooleanField(default=False)
+    
+    def __str__(self):
+        return f'{self.user}-{self.item.title}-{self.pk}'
 
 class Order(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
