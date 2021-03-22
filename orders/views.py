@@ -43,9 +43,9 @@ def add_to_cart(request, slug):
         return redirect('shop:home')
 
 def single_item_remove_form_cart(request, slug):
-    user = user.request
+    user = request.user
     item = get_object_or_404(Product, slug=slug)
-    order_qs = OrderItem.objects.filter(
+    order_qs = Order.objects.filter(
         user = user,
         ordered=False
     )
@@ -56,17 +56,17 @@ def single_item_remove_form_cart(request, slug):
                 user=user,
                 item=item,
                 ordered=False
-            )
+            )[0]
             if order_item.quantity > 1:
                 order_item.quantity -= 1
                 order_item.save()
             else:
-                order.item.remove(order_item)
+                order.items.remove(order_item)
             messages.info(request, 'This item quantity was updated.')
-            return redirect('shop:home')
+            return redirect('order:cart_details')
         else:
             messages.info(request, 'This item was not in your cart.')
-            return redirect('shop:home')
+            return redirect('order:cart_details')
     else:
         messages.info(request, 'You do not have an active order.')
         return redirect('shop:home')
